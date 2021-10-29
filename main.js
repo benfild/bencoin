@@ -33,4 +33,12 @@ class Blockchain{
         newBlock.hash = newBlock.calculateHash();
         this.chain.push(newBlock);
     }
+
+    
 }
+
+let benCoin = new Blockchain();
+benCoin.addBlock(new Block(1, "27/09/2021", {amount: 3}));
+benCoin.addBlock(new Block(1, "29/09/2021", {amount: 11}));
+
+console.log(JSON.stringify(benCoin, null, 4));
