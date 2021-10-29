@@ -35,7 +35,7 @@ class Blockchain{
     }
 
     isChainValid(){
-        for (let i=1; i < globalThis.chain.length; i++){
+        for (let i=1; i < this.chain.length; i++){
             const currentBlock = this.chain[i];
             const previousBlock = this.chain[i - 1];
 
@@ -54,5 +54,12 @@ class Blockchain{
 let benCoin = new Blockchain();
 benCoin.addBlock(new Block(1, "27/09/2021", {amount: 3}));
 benCoin.addBlock(new Block(1, "29/09/2021", {amount: 11}));
+
+console.log("Is blockchain valid? " + benCoin.isChainValid());
+
+benCoin.chain[1].data = {amount: 5};
+benCoin.chain[1].hash = benCoin.chain[1].calculateHash();
+
+console.log("Is blockchain valid? " + benCoin.isChainValid());
 
 console.log(JSON.stringify(benCoin, null, 4));
