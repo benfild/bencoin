@@ -28,6 +28,7 @@ class Block{
 class Blockchain{
     constructor(){
         this.chain = [this.createGenesisBlock()];
+        this.difficulty = 2;
     }
 
     createGenesisBlock(){
@@ -40,7 +41,7 @@ class Blockchain{
 
     addBlock(newBlock){
         newBlock.previousHash = this.getLatestBlock().hash;
-        newBlock.hash = newBlock.calculateHash();
+        newBlock.mineBlock(this.difficulty);
         this.chain.push(newBlock);
     }
 
@@ -62,14 +63,17 @@ class Blockchain{
 }
 
 let benCoin = new Blockchain();
+
+console.log("Mining Block 1...");
 benCoin.addBlock(new Block(1, "27/09/2021", {amount: 3}));
+console.log("Mining Block 2...");
 benCoin.addBlock(new Block(1, "29/09/2021", {amount: 11}));
 
-console.log("Is blockchain valid? " + benCoin.isChainValid());
+// console.log("Is blockchain valid? " + benCoin.isChainValid());
 
-benCoin.chain[1].data = {amount: 5};
-benCoin.chain[1].hash = benCoin.chain[1].calculateHash();
+// benCoin.chain[1].data = {amount: 5};
+// benCoin.chain[1].hash = benCoin.chain[1].calculateHash();
 
-console.log("Is blockchain valid? " + benCoin.isChainValid());
+// console.log("Is blockchain valid? " + benCoin.isChainValid());
 
-console.log(JSON.stringify(benCoin, null, 4));
+// console.log(JSON.stringify(benCoin, null, 4));
