@@ -9,7 +9,7 @@ class Transaction{
     }
 }
 class Block{
-    constructor(index, timestamp, transaction, previousHash = ''){
+    constructor(timestamp, transaction, previousHash = ''){
         this.timestamp = timestamp;
         this.transaction = transaction;
         this.previousHash = previousHash;
@@ -48,10 +48,18 @@ class Blockchain{
         return this.chain[this.chain.length - 1];
     }
 
-    addBlock(newBlock){
-        newBlock.previousHash = this.getLatestBlock().hash;
-        newBlock.mineBlock(this.difficulty);
-        this.chain.push(newBlock);
+    // addBlock(newBlock){
+    //     newBlock.previousHash = this.getLatestBlock().hash;
+    //     newBlock.mineBlock(this.difficulty);
+    //     this.chain.push(newBlock);
+    // }
+
+    minePendingTransactions(miningRewardAddress){
+        let block = new Block(Date.now(), this.pendingTransactions);
+        block.mineBlock(this.difficulty);
+
+        console.log('Block successfully mined!');
+        this.chain.push(block);
     }
 
     isChainValid(){
