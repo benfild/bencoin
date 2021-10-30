@@ -60,6 +60,14 @@ class Blockchain{
 
         console.log('Block successfully mined!');
         this.chain.push(block);
+
+        this.pendingTransactions = [
+            new Transaction(null, miningRewardAddress, this.miningReward)
+        ];
+    }
+
+    createTransaction(transaction){
+        this.pendingTransactions.push(transaction);
     }
 
     isChainValid(){
