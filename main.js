@@ -108,6 +108,7 @@ class Blockchain{
 
 let benCoin = new Blockchain();
 
+//TEST 1
 // console.log("Mining Block 1...");
 // benCoin.addBlock(new Block(1, "27/09/2021", {amount: 3}));
 // console.log("Mining Block 2...");
@@ -121,3 +122,12 @@ let benCoin = new Blockchain();
 // console.log("Is blockchain valid? " + benCoin.isChainValid());
 
 // console.log(JSON.stringify(benCoin, null, 4));
+
+// TEST 2
+benCoin.createTransaction(new Transaction('address1', 'address2', 150));
+benCoin.createTransaction(new Transaction('address2', 'address1', 50));
+
+console.log('\nStarting the miner.....');
+benCoin.minePendingTransactions('sweet-address');
+
+console.log('\nBalance of Sweet is ', benCoin.getBalanceOfAddress('sweet-address'));
