@@ -1,3 +1,4 @@
+const {Blockchain, Transaction} = require('./blockchain');
 let benCoin = new Blockchain();
 
 //TEST 1
