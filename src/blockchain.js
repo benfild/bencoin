@@ -105,3 +105,6 @@ class Blockchain {
         return true;
     }
 }
+
+module.exports.Blockchain = Blockchain;
+module.exports.Transaction = Transaction;
