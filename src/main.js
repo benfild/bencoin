@@ -39,3 +39,7 @@ console.log('\nBalance of Sweet is ', benCoin.getBalanceOfAddress(myWalletAddres
 // benCoin.minePendingTransactions('sweet-address');
 
 // console.log('\nBalance of Sweet is ', benCoin.getBalanceOfAddress('sweet-address'));
+
+benCoin.chain[1].transactions[0].amount = 1;
+
+console.log('Is chain valid: ', benCoin.isChainValid());
