@@ -17,8 +17,8 @@ let benCoin = new Blockchain();
 // console.log(JSON.stringify(benCoin, null, 4));
 
 // TEST 2
-benCoin.createTransaction(new Transaction('address1', 'address2', 150));
-benCoin.createTransaction(new Transaction('address2', 'address1', 50));
+benCoin.addTransaction(new Transaction('address1', 'address2', 150));
+benCoin.addTransaction(new Transaction('address2', 'address1', 50));
 
 console.log('\nStarting the miner.....');
 benCoin.minePendingTransactions('sweet-address');
